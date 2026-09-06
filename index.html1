@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Sumaiya ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  overflow-x:hidden;
+  background:
+  radial-gradient(circle at top left,#ff4f8b,#170018 55%,#050008);
+  transition:background 1.2s ease;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+  position:fixed;
+  bottom:-50px;
+  color:#ff4f8b;
+  font-size:25px;
+  animation:floatUp linear infinite;
+  z-index:-1;
+  opacity:.7;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+  20%{opacity:.8;}
+  to{
+    transform:translateY(-120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* MAIN */
+
+.container{
+  width:min(900px,92%);
+  margin:auto;
+  text-align:center;
+  padding:70px 0;
+}
+
+.badge{
+  display:inline-block;
+  padding:10px 22px;
+  border-radius:50px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  margin-bottom:25px;
+}
+
+h1{
+  font-size:clamp(42px,8vw,85px);
+  text-shadow:
+  0 0 10px #fff,
+  0 0 30px #ff4081,
+  0 0 70px #ff4081;
+  animation:titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.04);
+  }
+}
+
+.name{
+  color:#ff7ab5;
+  text-shadow:
+  0 0 10px white,
+  0 0 30px #ff0080,
+  0 0 70px #ff0080;
+}
+
+.subtitle{
+  font-size:20px;
+  margin:25px auto;
+  max-width:650px;
+  min-height:90px;
+  line-height:1.8;
+  opacity:.95;
+}
+
+/* BUTTON */
+
+button{
+  margin:10px;
+  padding:16px 28px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:17px;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(135deg,#ff0066,#8a2be2);
+  box-shadow:
+  0 0 15px #ff0080,
+  0 0 35px rgba(255,0,128,.6);
+  transition:.4s;
+  animation:buttonLight 2s infinite alternate;
+}
+
+@keyframes buttonLight{
+  from{
+    box-shadow:
+    0 0 15px #ff0080,
+    0 0 30px #ff0080;
+  }
+
+  to{
+    box-shadow:
+    0 0 30px white,
+    0 0 70px #ff0080;
+  }
+}
+
+button:hover{
+  transform:scale(1.1) rotate(-2deg);
+}
+
+/* MESSAGE CARD */
+
+.card{
+  display:none;
+  margin:40px auto;
+  padding:35px;
+  max-width:700px;
+  border-radius:30px;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 0 50px rgba(255,0,128,.35);
+  animation:cardIn 1s forwards;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(50px) scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.card h2{
+  color:#ff8fc2;
+  margin-bottom:20px;
+  font-size:32px;
+}
+
+.card p{
+  font-size:19px;
+  line-height:1.9;
+}
+
+/* PHOTO SECTION */
+
+.photos{
+  display:none;
+  margin-top:60px;
+  animation:cardIn 1s forwards;
+}
+
+.photos h2{
+  font-size:35px;
+  margin-bottom:35px;
+  text-shadow:0 0 20px #ff0080;
+}
+
+.photo-grid{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.photo{
+  width:270px;
+  height:360px;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  border:3px solid rgba(255,255,255,.8);
+  box-shadow:
+  0 0 20px #ff0080,
+  0 0 60px rgba(255,0,128,.7);
+  transition:.6s;
+}
+
+.photo:hover{
+  transform:translateY(-15px) scale(1.05);
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo::after{
+  content:"❤️";
+  position:absolute;
+  bottom:15px;
+  right:20px;
+  font-size:35px;
+  filter:drop-shadow(0 0 10px #ff0080);
+}
+
+/* FINAL */
+
+.final{
+  display:none;
+  margin-top:70px;
+  animation:finalShow 2s forwards;
+}
+
+@keyframes finalShow{
+  from{
+    opacity:0;
+    transform:scale(.3) rotate(-5deg);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
+
+.final h2{
+  font-size:clamp(40px,8vw,90px);
+  color:#fff;
+  text-shadow:
+  0 0 10px #fff,
+  0 0 30px #ff0080,
+  0 0 70px #ff0080,
+  0 0 120px #ff0080;
+}
+
+.final p{
+  font-size:22px;
+  margin-top:25px;
+}
+
+/* CONFETTI */
+
+.confetti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  top:-20px;
+  animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+footer{
+  margin-top:70px;
+  opacity:.7;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="badge">💌 A Special Surprise Just For You 💌</div>
+
+<h1>Sumaiya <span class="name">❤️</span></h1>
+
+<div class="subtitle" id="typing"></div>
+
+<button onclick="showSorry()">
+💌 একটা কথা আছে
+</button>
+
+<button onclick="showPhotos()">
+📸 আমাদের ছবি দেখো
+</button>
+
+<button onclick="finalLove()">
+❤️ শেষ সারপ্রাইজ
+</button>
+
+
+<div class="card" id="sorryCard">
+
+<h2>আমার সোনা জান পাকhi ❤️</h2>
+
+<p>
+
+আমার সোনা জান পাকhi, আমার লক্ষ্মী বউ,
+আমার কলিজা... ❤️
+
+তুমি রাগ করে থাকলে আমার একদম ভালো লাগে না।
+হয়তো আমি অনেক সময় তোমাকে কষ্ট দিয়েছি,
+হয়তো সবসময় তোমাকে ঠিকভাবে বুঝতে পারিনি...
+
+কিন্তু একটা কথা সত্যি—
+
+<b style="color:#ff7ab5">
+তোমাকে আমি সত্যিই অনেক ভালোবাসি।
+</b>
+
+তুমি শুধু আমার ভালোবাসার মানুষ না,
+তুমি আমার হাসি, আমার সুখ,
+আর আমার জীবনের সবচেয়ে সুন্দর মানুষ। ❤️
+
+<br><br>
+
+<b style="font-size:24px">
+Please forgive me, আমার বউ... 🥺❤️
+</b>
+
+</p>
+
+</div>
+
+
+<div class="photos" id="photos">
+
+<h2>📸 Our Beautiful Memories ❤️</h2>
+
+<div class="photo-grid">
+
+<div class="photo">
+<img src="razu.jpg" alt="My Photo">
+</div>
+
+<div class="photo">
+<img src="sumaiya.jpg" alt="Sumaiya Photo">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="final" id="final">
+
+<h2>I LOVE YOU<br>SUMAIYA ❤️</h2>
+
+<p>
+আজকে, আগামীকাল, আর সবসময়...
+তুমি আমার সবচেয়ে প্রিয় মানুষ থাকবে। ❤️✨
+</p>
+
+<h3 style="margin-top:35px;font-size:30px">
+আমার সোনা জান পাকhi, আমার লক্ষ্মী বউ,
+আমার কলিজা... ❤️
+</h3>
+
+</div>
+
+<footer>
+Made with ❤️ just for Sumaiya
+</footer>
+
+</div>
+
+
+<script>
+
+/* TYPING ANIMATION */
+
+const text =
+"আজকের এই ছোট্ট সারপ্রাইজটা শুধু তোমার জন্য... ❤️ আশা করি তুমি রাগ ভুলে একটু হাসবে, আমার সুন্দরী বউ। 🥺💕";
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,45);
+
+}
+
+}
+
+typeWriter();
+
+
+/* DIFFERENT BACKGROUNDS */
+
+const backgrounds=[
+
+"radial-gradient(circle at top left,#ff4f8b,#170018 55%,#050008)",
+
+"linear-gradient(135deg,#10002b,#3c096c,#ff006e)",
+
+"radial-gradient(circle at center,#3a0ca3,#0b0014,#000)",
+
+"linear-gradient(135deg,#ff006e,#8338ec,#3a86ff)",
+
+"radial-gradient(circle at top,#ff8fab,#240046,#030014)"
+
+];
+
+let bg=0;
+
+function changeBackground(){
+
+bg++;
+
+document.body.style.background=
+
+backgrounds[bg%backgrounds.length];
+
+}
+
+
+/* SORRY MESSAGE */
+
+function showSorry(){
+
+changeBackground();
+
+let card=document.getElementById("sorryCard");
+
+card.style.display="block";
+
+card.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+heartExplosion();
+
+}
+
+
+/* SHOW PHOTOS */
+
+function showPhotos(){
+
+changeBackground();
+
+let photos=document.getElementById("photos");
+
+photos.style.display="block";
+
+photos.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+heartExplosion();
+
+}
+
+
+/* FINAL LOVE */
+
+function finalLove(){
+
+changeBackground();
+
+let final=document.getElementById("final");
+
+final.style.display="block";
+
+final.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+confetti();
+
+heartExplosion();
+
+}
+
+
+/* FLOATING HEARTS */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=
+
+15+Math.random()*35+"px";
+
+heart.style.animationDuration=
+
+5+Math.random()*6+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},11000);
+
+}
+
+setInterval(createHeart,700);
+
+
+/* HEART EXPLOSION */
+
+function heartExplosion(){
+
+for(let i=0;i<30;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left="50%";
+
+heart.style.top="50%";
+
+heart.style.fontSize=
+
+20+Math.random()*25+"px";
+
+heart.style.zIndex="1000";
+
+document.body.appendChild(heart);
+
+let x=(Math.random()-.5)*1000;
+
+let y=(Math.random()-.5)*1000;
+
+heart.animate([
+
+{transform:"translate(-50%,-50%) scale(0)"},
+
+{transform:`translate(${x}px,${y}px) scale(1.5)`}
+
+],{
+
+duration:1500,
+
+easing:"ease-out"
+
+});
+
+setTimeout(()=>heart.remove(),1500);
+
+}
+
+}
+
+
+/* CONFETTI */
+
+function confetti(){
+
+for(let i=0;i<100;i++){
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.background=
+
+`hsl(${Math.random()*360},100%,60%)`;
+
+c.style.animationDuration=
+
+2+Math.random()*3+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),5000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

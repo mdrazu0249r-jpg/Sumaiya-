@@ -1,0 +1,629 @@
+index.html<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sumaiya ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+    background:#030308;
+    color:#fff;
+    font-family:Arial,sans-serif;
+}
+
+.bg{
+    position:fixed;inset:0;z-index:-5;
+    background:
+    radial-gradient(circle at 15% 20%,rgba(255,0,100,.25),transparent 32%),
+    radial-gradient(circle at 85% 75%,rgba(110,70,255,.25),transparent 35%),
+    radial-gradient(circle at 50% 50%,#1a0718,#030308 75%);
+}
+
+.beam{
+    position:fixed;width:45vw;height:150vh;
+    top:-25vh;left:-50vw;z-index:-4;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+    transform:rotate(25deg);
+    animation:beamMove 10s linear infinite;
+}
+@keyframes beamMove{
+    from{left:-50vw}
+    to{left:130vw}
+}
+
+.scene{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    text-align:center;padding:25px;
+    opacity:0;visibility:hidden;
+    transform:scale(1.08);
+    transition:opacity .8s ease,transform .8s ease;
+}
+.scene.active{
+    opacity:1;visibility:visible;
+    transform:scale(1);
+}
+
+/* DIFFERENT ANIMATIONS */
+.blur{opacity:0;filter:blur(20px)}
+.scene.active .blur{animation:blurIn 1s ease forwards}
+@keyframes blurIn{to{opacity:1;filter:blur(0)}}
+
+.zoom{opacity:0;transform:scale(.2)}
+.scene.active .zoom{
+    animation:zoomIn 1s cubic-bezier(.2,1,.3,1) forwards
+}
+@keyframes zoomIn{
+    70%{opacity:1;transform:scale(1.12)}
+    100%{opacity:1;transform:scale(1)}
+}
+
+.left{opacity:0;transform:translateX(-130px)}
+.scene.active .left{animation:leftIn .9s ease forwards}
+@keyframes leftIn{to{opacity:1;transform:translateX(0)}}
+
+.right{opacity:0;transform:translateX(130px)}
+.scene.active .right{animation:rightIn .9s ease forwards}
+@keyframes rightIn{to{opacity:1;transform:translateX(0)}}
+
+.flip{
+    opacity:0;
+    transform:perspective(800px) rotateY(90deg)
+}
+.scene.active .flip{animation:flipIn 1s ease forwards}
+@keyframes flipIn{
+    to{
+        opacity:1;
+        transform:perspective(800px) rotateY(0)
+    }
+}
+
+.drop{opacity:0;transform:translateY(-100px)}
+.scene.active .drop{
+    animation:dropIn 1s cubic-bezier(.2,1.3,.3,1) forwards
+}
+@keyframes dropIn{to{opacity:1;transform:translateY(0)}}
+
+/* DELAYS */
+.d1{animation-delay:.2s!important}
+.d2{animation-delay:.8s!important}
+.d3{animation-delay:1.4s!important}
+.d4{animation-delay:2s!important}
+.d5{animation-delay:2.6s!important}
+
+/* TEXT */
+.small{
+    color:#ffb2cf;
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:22px;
+}
+
+.big{
+    font-size:clamp(40px,10vw,90px);
+    line-height:1.2;
+    font-weight:bold;
+}
+
+.message{
+    max-width:650px;
+    color:#e7e2e8;
+    font-size:clamp(16px,4vw,20px);
+    line-height:1.9;
+    margin:8px 0;
+}
+
+/* SUMAIYA LIGHTING */
+.name-box{
+    position:relative;
+    padding:35px 20px;
+}
+
+.name-light{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:350px;
+    height:220px;
+    transform:translate(-50%,-50%);
+    background:
+    radial-gradient(
+        ellipse,
+        rgba(255,30,130,.8),
+        rgba(140,70,255,.35) 45%,
+        transparent 72%
+    );
+    filter:blur(25px);
+    animation:nameLight 2s ease-in-out infinite;
+}
+
+@keyframes nameLight{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(.8);
+        opacity:.5;
+    }
+    50%{
+        transform:translate(-50%,-50%) scale(1.3);
+        opacity:1;
+    }
+}
+
+.name{
+    position:relative;
+    font-family:"Brush Script MT",cursive;
+    font-size:clamp(80px,20vw,180px);
+
+    background:linear-gradient(
+        90deg,#fff,#ff3f96,#ffd76b,#a76bff,#fff
+    );
+    background-size:400%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    filter:
+    drop-shadow(0 0 15px rgba(255,50,150,.9))
+    drop-shadow(0 0 45px rgba(130,80,255,.5));
+
+    animation:
+    nameGradient 4s linear infinite,
+    nameFloat 3s ease-in-out infinite;
+}
+
+@keyframes nameGradient{
+    to{background-position:400%}
+}
+@keyframes nameFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+/* LOVE LIGHT */
+.love{
+    font-size:clamp(30px,8vw,70px);
+    font-weight:bold;
+    margin:10px 0;
+
+    background:linear-gradient(
+        90deg,#ff3d8d,#fff,#ffcf67,#fff,#ff3d8d
+    );
+    background-size:350%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    loveGlow 2s ease-in-out infinite,
+    loveGradient 4s linear infinite;
+}
+
+@keyframes loveGradient{
+    to{background-position:350%}
+}
+
+@keyframes loveGlow{
+    0%,100%{
+        filter:
+        drop-shadow(0 0 10px #ff176d)
+        drop-shadow(0 0 20px #ff176d);
+    }
+    50%{
+        filter:
+        drop-shadow(0 0 25px #ff176d)
+        drop-shadow(0 0 55px #a76bff);
+    }
+}
+
+/* TYPING ANIMATION */
+.typing-text{
+    min-height:120px;
+    max-width:680px;
+    margin:15px auto;
+    padding:10px;
+
+    font-size:clamp(18px,4.8vw,28px);
+    line-height:1.7;
+    color:#fff;
+
+    text-shadow:
+    0 0 10px rgba(255,70,150,.8),
+    0 0 30px rgba(130,80,255,.5);
+}
+
+.cursor{
+    display:inline-block;
+    margin-left:4px;
+    color:#ff6aa8;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+/* BUTTON */
+.btn{
+    position:relative;
+    overflow:hidden;
+    margin-top:35px;
+    padding:18px 38px;
+    border:none;
+    border-radius:50px;
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        90deg,#ff176d,#ff5ca8,#805cff,#00c6ff
+    );
+    background-size:300%;
+
+    animation:
+    btnGradient 4s linear infinite,
+    btnGlow 2s ease-in-out infinite;
+
+    box-shadow:0 0 25px rgba(255,30,110,.7);
+}
+
+@keyframes btnGradient{
+    to{background-position:300%}
+}
+
+@keyframes btnGlow{
+    50%{
+        box-shadow:
+        0 0 35px #ff176d,
+        0 0 70px rgba(120,70,255,.6);
+    }
+}
+
+.btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:60%;
+    height:100%;
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.85),
+        transparent
+    );
+    transform:skewX(-25deg);
+    animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+    0%{left:-120%}
+    70%,100%{left:160%}
+}
+
+.btn:active{transform:scale(.95)}
+
+/* HEART */
+.heart{
+    font-size:100px;
+    filter:
+    drop-shadow(0 0 20px #ff176d)
+    drop-shadow(0 0 50px #ff176d);
+    animation:heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.2)}
+}
+
+/* PARTICLES */
+.particle{
+    position:fixed;
+    width:4px;height:4px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+    0 0 10px #fff,
+    0 0 25px #ff4f9a;
+    animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+    from{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+    20%{opacity:.8}
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+
+/* MUSIC BUTTON */
+.music{
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:20;
+    padding:10px 16px;
+    border:none;
+    border-radius:30px;
+    color:#fff;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="beam"></div>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">
+🎵 PLAY MUSIC
+</button>
+
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- SCENE 1 -->
+<section class="scene active" id="scene1">
+
+<div class="small blur d1">A LITTLE MESSAGE FOR YOU</div>
+
+<div class="big zoom d2">HEY...</div>
+
+<div class="love flip d3">SUMAIYA ❤️</div>
+
+<div class="message right d4">
+একটু আমার কথা শুনবে? 🥺
+</div>
+
+<button class="btn drop d5" onclick="start()">
+OPEN MY HEART ❤️
+</button>
+
+</section>
+
+
+<!-- SCENE 2 -->
+<section class="scene" id="scene2">
+
+<div class="big blur d1">আমার সোনা জান... ❤️</div>
+<div class="big zoom d2">আমার পাখি... 🕊️</div>
+<div class="big left d3">আমার লক্ষ্মী বউ... 🥺❤️</div>
+<div class="big right d4">আমার কলিজা... ❤️</div>
+
+<button class="btn drop d5" onclick="go(3)">
+আরও একটু দেখো ✨
+</button>
+
+</section>
+
+
+<!-- SCENE 3 -->
+<section class="scene" id="scene3">
+
+<div class="small blur d1">MY HEART WANTS TO SAY...</div>
+
+<div class="name-box zoom d2">
+    <div class="name-light"></div>
+    <div class="name">Sumaiya</div>
+</div>
+
+<div class="message left d3">
+আমি জানি তুমি হয়তো আমার উপর রাগ করে আছো... 🥺
+</div>
+
+<div class="message right d4">
+কিন্তু তোমার রাগের থেকেও তোমার হাসিটা
+আমার বেশি প্রিয়। ❤️
+</div>
+
+<button class="btn drop d5" onclick="go(4)">
+আরও একটু শুনো ❤️
+</button>
+
+</section>
+
+
+<!-- SCENE 4 -->
+<section class="scene" id="scene4">
+
+<div class="big drop d1">Sorry বউ... 🥺❤️</div>
+
+<div class="heart zoom d2">❤️</div>
+
+<div class="message left d3">
+আমি হয়তো অনেক সময় ভুল করি...
+</div>
+
+<div class="message right d4">
+কিন্তু তোমাকে কষ্ট দেওয়ার ইচ্ছা
+আমার কখনোই ছিল না।
+</div>
+
+<button class="btn flip d5" onclick="go(5)">
+একটা শেষ কথা আছে ❤️
+</button>
+
+</section>
+
+
+<!-- SCENE 5 : TYPING -->
+<section class="scene" id="scene5">
+
+<div class="small blur d1">FROM MY HEART...</div>
+
+<div class="typing-text" id="typingText">
+</div>
+
+<div class="love blur d5">
+ভালোবাসি তোমাকে ❤️
+</div>
+
+<button class="btn drop d5" onclick="go(6)">
+ONE LAST THING ❤️
+</button>
+
+</section>
+
+
+<!-- SCENE 6 -->
+<section class="scene" id="scene6">
+
+<div class="heart zoom d1">❤️</div>
+
+<div class="name-box flip d2">
+    <div class="name-light"></div>
+    <div class="name">Sumaiya</div>
+</div>
+
+<div class="love drop d3">
+আমার কলিজা ❤️
+</div>
+
+<div class="typing-text" id="finalTypingText"></div>
+
+<div class="love blur d5">
+I LOVE YOU ❤️
+</div>
+
+</section>
+
+
+<script>
+
+/* PARTICLES */
+for(let i=0;i<30;i++){
+    const p=document.createElement("div");
+    p.className="particle";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(7+Math.random()*10)+"s";
+    p.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(p);
+}
+
+
+/* MUSIC */
+const music=document.getElementById("music");
+const musicBtn=document.getElementById("musicBtn");
+
+function start(){
+    music.play().catch(()=>{});
+    musicBtn.innerHTML="🎵 MUSIC ON";
+    go(2);
+}
+
+function toggleMusic(){
+    if(music.paused){
+        music.play().catch(()=>{});
+        musicBtn.innerHTML="🎵 MUSIC ON";
+    }else{
+        music.pause();
+        musicBtn.innerHTML="🔇 MUSIC OFF";
+    }
+}
+
+
+/* TYPING FUNCTION */
+function typeText(id,text,speed=55){
+
+    const element=document.getElementById(id);
+
+    element.innerHTML="";
+
+    let i=0;
+
+    function type(){
+
+        if(i<text.length){
+
+            element.innerHTML+=text.charAt(i);
+
+            i++;
+
+            setTimeout(type,speed);
+
+        }
+
+        else{
+
+            element.innerHTML+=
+            '<span class="cursor">|</span>';
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* SCENE CHANGE */
+function go(number){
+
+    document.querySelectorAll(".scene")
+    .forEach(scene=>{
+        scene.classList.remove("active");
+    });
+
+    setTimeout(()=>{
+
+        const nextScene=
+        document.getElementById("scene"+number);
+
+        nextScene.classList.add("active");
+
+
+        /* SCENE 5 TYPING */
+        if(number===5){
+
+            setTimeout(()=>{
+
+                typeText(
+                    "typingText",
+                    "এত রাগ করে থেকো না আমার জান... কারণ তুমি আমার কাছে অনেক বেশি Special। তোমার মন খারাপ থাকলে আমারও ভালো লাগে না। ❤️",
+                    45
+                );
+
+            },1000);
+
+        }
+
+
+        /* FINAL TYPING */
+        if(number===6){
+
+            setTimeout(()=>{
+
+                typeText(
+                    "finalTypingText",
+                    "আমি perfect না, ভুল করি... কিন্তু একটা কথা সবসময় সত্যি থাকবে—তোমাকে অনেক ভালোবাসি। ❤️",
+                    50
+                );
+
+            },1600);
+
+        }
+
+    },180);
+
+}
+
+</script>
+
+</body>
+</html>
